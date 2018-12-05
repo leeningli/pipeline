@@ -45,5 +45,5 @@ deploy:
         password: $DOCKER_PASSWORD
         cmd: /bin/bash -c "cd /pipeline/source;./hello"
         tag: latest
-        repository: leeing227/hello
+        repository: leeing227/common/hello
         #registry: https://registry.hub.docker.com
