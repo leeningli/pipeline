@@ -37,7 +37,7 @@ build:
           export PATH=$WERCKER_SOURCE_DIR/bin:$PATH
           #glide install
 
-    - wercker/golint
+    #- wercker/golint
 
     - script:
         name: go build
