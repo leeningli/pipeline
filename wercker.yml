@@ -46,4 +46,4 @@ deploy:
         cmd: /bin/bash -c "cd /pipeline/source;./hello"
         tag: latest
         repository: leeing227/hello
-        registry: https://registry.hub.docker.com
+        #registry: https://registry.hub.docker.com
