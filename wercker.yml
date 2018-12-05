@@ -1,0 +1,25 @@
+# The container definition we want to use for developing our app
+box:
+  id: golang
+
+# Defining the dev pipeline
+dev:
+  steps:
+    - setup-go-workspace:
+        package-dir: github.com/leeningli/pipeline
+        
+#    - script:
+#        name: env
+#        code: env
+#    - script:
+#        name: go get
+#        code: |
+#          cd $WERCKER_SOURCE_DIR
+#          go version
+#          go get -u github.com/leeningli/goscp
+#          export PATH=$WERCKER_SOURCE_DIR/bin:$PATH
+#          glide install
+    - internal/watch:
+        code: go run main.go
+        reload: true
+      
