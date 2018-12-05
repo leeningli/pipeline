@@ -55,12 +55,12 @@ build:
         code: |
           cp -R ./ /pipeline/source
 
-    - internal/docker-push:
-        username: $DOCKER_USERNAME
-        password: $DOCKER_PASSWORD
-        cmd: /bin/bash -c "cd /pipeline/source;./hello"
-        tag: v3
-        repository: leeing227/hello
+#    - internal/docker-push:
+#        username: $DOCKER_USERNAME
+#        password: $DOCKER_PASSWORD
+#        cmd: /bin/bash -c "cd /pipeline/source;./hello"
+#        tag: v3
+#        repository: leeing227/hello
 
 #wercker将我们的应用放在容器中的位置是/pipeline/source
 deploy:
@@ -69,6 +69,6 @@ deploy:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         cmd: /bin/bash -c "cd /pipeline/source;./hello"
-        tag: v2
+        tag: v4
         repository: leeing227/hello
         #registry: https://registry.hub.docker.com
