@@ -36,3 +36,14 @@ build:
         name: go test
         code: |
           go test ./...
+
+#wercker将我们的应用放在容器中的位置是/pipeline/source
+deploy:
+  steps:
+    - internal/docker-push:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        cmd: /bin/bash -c "cd /pipeline/source;./hello"
+        tag: latest
+        repository: leeing227/hello
+        registry: https://registry.hub.docker.com
