@@ -22,4 +22,17 @@ dev:
     - internal/watch:
         code: go run main.go
         reload: true
-      
+
+build:
+  steps:
+    - setup-go-workspace:
+      package-dir: github.com/leeningli/pipeline
+    - wercker/golint
+    - script:
+        name: go build
+        code: |
+          go build ./...
+    - script:
+        name: go test
+        code: |
+          go test ./...
