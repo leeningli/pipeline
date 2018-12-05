@@ -31,7 +31,7 @@ build:
     - script:
         name: go build
         code: |
-          go build ./...
+          go build -o hello main.go
     - script:
         name: go test
         code: |
