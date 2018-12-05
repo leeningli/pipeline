@@ -36,6 +36,12 @@ build:
         name: go test
         code: |
           go test ./...
+    - internal/docker-push:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        cmd: /bin/bash -c "cd /pipeline/source;./hello"
+        tag: latest
+        repository: leeing227/hello:v1
 
 #wercker将我们的应用放在容器中的位置是/pipeline/source
 deploy:
@@ -45,5 +51,5 @@ deploy:
         password: $DOCKER_PASSWORD
         cmd: /bin/bash -c "cd /pipeline/source;./hello"
         tag: latest
-        repository: leeing227/hello
+        repository: leeing227/hello:v2
         #registry: https://registry.hub.docker.com
