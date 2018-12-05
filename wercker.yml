@@ -27,15 +27,34 @@ build:
   steps:
     - setup-go-workspace:
       package-dir: github.com/leeningli/pipeline
+    
+    - script:
+        name: env
+        code: |
+          cd $WERCKER_SOURCE_DIR
+          go version
+          go get -u github.com/Masterminds/glide
+          export PATH=$WERCKER_SOURCE_DIR/bin:$PATH
+          glide install
+
     - wercker/golint
+
     - script:
         name: go build
         code: |
           go build -o hello main.go
+
     - script:
         name: go test
         code: |
-          go test ./...
+          #go test ./...
+          go test -v $(glide novendor)
+
+    - script:
+        name: copy file to wercker output
+        code: |
+          cp -R ./ ${WERCKER_OUTPUT_DIR}
+
     - internal/docker-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
