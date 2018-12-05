@@ -40,8 +40,8 @@ build:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         cmd: /bin/bash -c "cd /pipeline/source;./hello"
-        tag: latest
-        repository: leeing227/hello:v1
+        tag: v1
+        repository: leeing227/hello
 
 #wercker将我们的应用放在容器中的位置是/pipeline/source
 deploy:
@@ -50,6 +50,6 @@ deploy:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         cmd: /bin/bash -c "cd /pipeline/source;./hello"
-        tag: latest
-        repository: leeing227/hello:v2
+        tag: v2
+        repository: leeing227/hello
         #registry: https://registry.hub.docker.com
