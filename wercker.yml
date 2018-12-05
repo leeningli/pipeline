@@ -47,19 +47,19 @@ build:
     - script:
         name: go test
         code: |
-          #go test ./...
-          go test -v $(glide novendor)
+          go test ./...
+          #go test -v $(glide novendor)
 
     - script:
         name: copy file to wercker output
         code: |
-          cp -R ./ ${WERCKER_OUTPUT_DIR}
+          cp -R ./ /pipeline/source
 
     - internal/docker-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
         cmd: /bin/bash -c "cd /pipeline/source;./hello"
-        tag: v1
+        tag: v3
         repository: leeing227/hello
 
 #wercker将我们的应用放在容器中的位置是/pipeline/source
