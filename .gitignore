@@ -1,3 +1,1 @@
 .wercker
-vendor
-!vendor/vendor.json
